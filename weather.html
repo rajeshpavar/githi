@@ -1,0 +1,125 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
+</head>
+<style>
+    *{margin: 0;padding: 0;box-sizing: border-box;}
+    .container{
+        width: 100%;
+        height: 100vh;
+        background-color: black;
+        color: white;
+    }
+    
+    #serch{
+        width: 100%;
+        height: 50px;
+        padding: 30px;
+        margin-bottom: 30px;
+        text-align: center;
+        font-size: 40px;
+    }
+
+    #btn{
+        width: 180px;
+        height: 50px;
+        text-align: center;
+        margin: auto;
+        display: block;
+    }
+    .weather{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 150px;
+        font-size: 50px;
+       
+    }
+    #city{
+        margin-right: 50px;
+    }
+    
+</style>
+<body>
+<div class="container">
+    
+
+    <form action="">
+        <input type="search" id="serch" placeholder="enter City Name">
+        <button type="button" id="btn">Enter</button>
+        
+        <div class="weather">
+
+            <h1 id="city">ahmedabad</h1>
+            <h2 id="temp">32</h2>
+
+        </div>
+    </form>
+</div>
+  
+    <script>
+        // 21ac873e03c354b94a4e0e3f3710467e   key 
+// https://api.openweathermap.org/data/2.5/weather?q=ahmedabad&appid=21ac873e03c354b94a4e0e3f3710467e
+        // const apiKey="21ac873e03c354b94a4e0e3f3710467e";
+        // const apiUrl="https://api.openweathermap.org/data/2.5/weather?&units=metric&q=ahmedabad";
+
+        // async function weather(){
+        //     const rep=await fetch(apiUrl + `&appid=${apiKey}`);
+        //     let data=await rep.json();
+        //     console.log(data);
+        // }
+
+        // weather()
+      
+    //   const search=document.getElementById('serch');
+    //   const btn=document.getElementById('btn');
+
+     
+
+    //     const apiKey="21ac873e03c354b94a4e0e3f3710467e";
+    //     const apiUrl='https://api.openweathermap.org/data/2.5/weather?&q=';
+
+
+
+    //    btn.addEventListener("click",  async function wet(){
+    //       const city=search.value;
+    //         let rep=await axios.get(apiUrl+city+`&appid=${apiKey}`);
+    //         console.log(rep.data)
+    //     })
+
+      const cit=document.getElementById('city');
+      const temp=document.getElementById('temp');
+    const search = document.getElementById('serch'); // Corrected the ID 'serch' to 'search'
+const btn = document.getElementById('btn');
+const wets=document.querySelector('weather')
+const apiKey = "21ac873e03c354b94a4e0e3f3710467e";
+const apiUrl = 'https://api.openweathermap.org/data/2.5/weather?q=';
+
+btn.addEventListener("click", async function() {
+    const city = search.value; // Get the value from the input field
+    console.log(city);
+   
+        let reps=await fetch(apiUrl+city+ `&appid=${apiKey}`);
+            let show=await reps.json();
+            console.log(show);
+           cit.textContent=show.name;
+           temp.textContent=show.main.temp;
+          
+           
+   
+});
+
+
+    </script>
+</body>
+</html>
+
+
+
